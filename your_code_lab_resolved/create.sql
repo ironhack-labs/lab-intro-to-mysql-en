@@ -1,0 +1,38 @@
+-- DROP DATABASE IF EXISTS CARS_COMPANY_SALES;
+-- CREATE DATABASE CARS_COMPANY_SALES;
+USE CARS_COMPANY_SALES;
+
+CREATE TABLE cars (
+	car_id INT NOT NULL AUTO_INCREMENT,
+    VIN VARCHAR(50) NOT NULL PRIMARY KEY,
+    manufacturer VARCHAR(50) NOT NULL,
+    model VARCHAR(50) NOT NULL,
+    year INT NOT NULL,
+    color VARCHAR(50) NOT NULL);
+
+CREATE TABLE customers (
+	cust_id INT AUTO_INCREMENT NOT NULL,
+    customer_id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    phone VARCHAR(50),
+    email VARCHAR(50),
+    address VARCHAR(50),
+    city VARCHAR(50),
+    state_province VARCHAR(50),
+    country VARCHAR(50),
+    postal_code VARCHAR(50));
+
+CREATE TABLE salespersons (
+sp_id INT AUTO_INCREMENT NOT NULL,
+staff_id INT NOT NULL PRIMARY KEY,
+name VARCHAR(50),
+store VARCHAR(50));
+
+CREATE TABLE invoices (
+in_id INT AUTO_INCREMENT NOT NULL,
+invoice_number INT NOT NULL PRIMARY KEY,
+date DATE,
+car INT, 
+customer INT,
+salesperson INT,
+)
