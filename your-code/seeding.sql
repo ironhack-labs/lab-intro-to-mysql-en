@@ -1,3 +1,4 @@
+use cars;
 insert into cars(car_id, manufacturer, model, year_, color)
 values ('0', 'Volkswagen','Tiguan', '2019','Blue'),
 ('1', 'Peugeot','Rifter', '2019', 'Red'),
@@ -21,12 +22,12 @@ values ('00001', 'Petey Cruiser', '0'),
 ('00005', 'Paige Turner', '4'),
 ('00006', 'Bob Frapples', '5'),
 ('00007', 'Walter Melon', '6'),
-('00008', 'Shonda Leer', 'São Paulo');
+('00008', 'Shonda Leer', '7');
 
-insert into invoices (invoice_id, date_, car, costumer, salesperson)
-values ('852399038', '2018-08-22',	'0','1','3'),
-('731166526', '2018-12-31', '3', '0', '5'),
-('271135104', '2019-01-22', '2','2','7');
+insert into invoices (invoice_id, date_,cars_car_id, costumer, salesperson_salesperson_id, car, costumer_costumer_id)
+values ('852399038', '2018-08-22',	'0','1','3', 'RAV4','10001'),
+('731166526', '2018-12-31', '3', '0', '5', 'V60 Cross Country', '20001'),
+('271135104', '2019-01-22', '2','2','7', '911', '30001');
 
 
 
