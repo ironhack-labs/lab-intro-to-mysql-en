@@ -1,78 +1,52 @@
-DROP DATABASE IF EXISTS cars;
-CREATE DATABASE cars; 
-USE cars;
 
--- -----------------------------------------------------
--- Table `cars`.`cars`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cars`.`cars` (
-  `car_id` INT NOT NULL,
-  `manufacturer` VARCHAR(20) NOT NULL,
-  `model` VARCHAR(20) NOT NULL,
-  `year_` INT NOT NULL,
-  `color` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`car_id`));
+USE lab_mysql;
+
+-- Create Cars table
+CREATE TABLE Cars (
+    Car_id INT AUTO_INCREMENT PRIMARY KEY,
+    VIN VARCHAR(20) UNIQUE,
+    Manufacturer VARCHAR(20),
+    Model VARCHAR(20),
+    Year INT,
+    Colour VARCHAR(20)
+);
+
+-- Create Customers table
+CREATE TABLE Customers (
+    Customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(20),
+    Phone_number VARCHAR(20),
+    Email VARCHAR(40),
+    Address VARCHAR(40),
+    City VARCHAR(20),
+    State VARCHAR(20),
+    Country VARCHAR(20),
+    Post_code VARCHAR(20)
+);
+
+-- Create Employees table
+CREATE TABLE EMPLOYEES (
+    Staff_id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(20),
+    Store VARCHAR(20)
+);
+
+-- Create Invoices table
+CREATE TABLE INVOICES (
+    Invoice_no INT AUTO_INCREMENT PRIMARY KEY,
+    Date DATE,
+    Car_id INT,
+    Customer_id INT,
+    Staff_id INT,
+    FOREIGN KEY (Car_id) REFERENCES Cars(Car_id),
+    FOREIGN KEY (Customer_id) REFERENCES Customers(Customer_id),
+    FOREIGN KEY (Staff_id) REFERENCES Employees(Staff_id)
+);
 
 
--- -----------------------------------------------------
--- Table `cars`.`costumer`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cars`.`costumer` (
-  `costumer_id` INT NOT NULL,
-  `first_name` VARCHAR(20) NOT NULL,
-  `last_name` VARCHAR(20),
-  `phone_no` VARCHAR(20) NULL DEFAULT NULL,
-  `email` VARCHAR(20) NULL DEFAULT NULL,
-  `address` VARCHAR(40) NULL DEFAULT NULL,
-  `city` VARCHAR(20) NULL DEFAULT NULL,
-  `state` VARCHAR(20) NULL DEFAULT NULL,
-  `country` VARCHAR(20) NULL DEFAULT NULL,
-  `zip_code` VARCHAR(20) NULL DEFAULT NULL,
-  `client` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`costumer_id`));
 
-
-  
-  -- -----------------------------------------------------
--- Table `cars`.`salesperson`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cars`.`salesperson` (
-  `salesperson_id` INT NOT NULL,
-  `first_name` VARCHAR(40) NOT NULL,
-  `store_name` VARCHAR(3) NOT NULL,
-  PRIMARY KEY (`salesperson_id`));
-
-- -----------------------------------------------------
--- Table `cars`.`invoices`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cars`.`invoices` (
-  `invoice_id` INT NOT NULL,
-  `date_` DATE NULL DEFAULT NULL,
-  `car` VARCHAR(20) NOT NULL,
-  `costumer` VARCHAR(20) NULL DEFAULT NULL,
-  `salesperson` VARCHAR(20) NULL DEFAULT NULL,
-  `salesperson_salesperson_id` INT NOT NULL,
-  `cars_car_id` INT NOT NULL,
-  `costumer_costumer_id` INT NOT NULL,
-  PRIMARY KEY (`invoice_id`),
-  INDEX `fk_invoices_salesperson_idx` (`salesperson_salesperson_id` ASC) VISIBLE,
-  INDEX `fk_invoices_cars1_idx` (`cars_car_id` ASC) VISIBLE,
-  INDEX `fk_invoices_costumer1_idx` (`costumer_costumer_id` ASC) VISIBLE,
-  CONSTRAINT `fk_invoices_salesperson`
-    FOREIGN KEY (`salesperson_salesperson_id`)
-    REFERENCES `cars`.`salesperson` (`salesperson_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_invoices_cars1`
-    FOREIGN KEY (`cars_car_id`)
-    REFERENCES `cars`.`cars` (`car_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_invoices_costumer1`
-    FOREIGN KEY (`costumer_costumer_id`)
-    REFERENCES `cars`.`costumer` (`costumer_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-
+   /* ALTER TABLE example_table ADD COLUMN age INT;
+    INSERT INTO example_table (name, email, age) VALUES ('John Doe', 'john.doe@example.com', 30);
+    UPDATE example_table SET email = 'new.email@example.com' WHERE id = 1; */
 
 
