@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `cars`.`costumer` (
 CREATE TABLE IF NOT EXISTS `cars`.`salesperson` (
   `salesperson_id` INT NOT NULL,
   `first_name` VARCHAR(40) NOT NULL,
-  `store_name` VARCHAR(3) NOT NULL,
+  `store_name` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`salesperson_id`));
 
 - -----------------------------------------------------
